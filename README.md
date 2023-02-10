@@ -16,7 +16,12 @@ But why summarizer should prefer different part of the text instead of others? W
 
 
 # The Project
-To improve the efficiency of any pretrained extractive summarization model, the idea of the project consists in a text segmentation model, able to identify in the text introduction, body and conclusions. In this way, we can use different summarizer for each part and extract a personalized number of  sentences from each one of them, according to their genre. 
+<p align="justify">
+To improve the efficiency of any pretrained extractive summarization model, the idea of the project consists in a text segmentation model, able to identify in the text introduction, body and conclusions. In this way, we can use different summarizer for each part and extract a personalized number of  sentences from each one of them, according to their genre.
+</p>
 
+<p align="center">
+<img src = "img/Model.png">
+</p>
 
 

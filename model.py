@@ -23,7 +23,6 @@ class LinearLayer(nn.Module):
 class SegmentationModel(nn.Module):
 
     def __init__(self, params):
-
         super(SegmentationModel, self).__init__()
 
         self.params = params
@@ -35,7 +34,6 @@ class SegmentationModel(nn.Module):
                             batch_first=params['batch_first'],
                             dropout=params['dropout'],
                             bidirectional=params['bidirectional'])
-
         # Linear Layers
         # This is a dynamic algorithm for creating linear networks.
         linear_layers = []
@@ -84,7 +82,6 @@ class SegmentationModel(nn.Module):
         Same as a forward pass, but just returns prediction on input samples. If
         you need to compute loss or logits, use the forward method.
         """
-
         inputs = x.to(device)
         rnn_out = self.lstm(inputs)[0]
         logits = self.linear(rnn_out[:, -1, :])

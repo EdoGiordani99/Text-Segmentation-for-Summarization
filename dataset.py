@@ -10,7 +10,7 @@ class SegmentationDataset(Dataset):
     def __init__(self, texts_folder: str, annotations_path: str):
         """
         Args:
-            data_path (str): folder of texts
+            texts_folder (str): folder where texts are stored
             annotations_path (str): path to the annotation file
         """
 
@@ -93,7 +93,6 @@ class SegmentationDataset(Dataset):
         """
         Pad to have all texts with the same number of sentences
         """
-
         max_len = len(max(self.dataset['labels'], key=len))
 
         for x, y in zip(self.dataset['texts'], self.dataset['labels']):
@@ -112,9 +111,13 @@ def collate_fn(batch):
     """
     Process the batch
     Args:
-        batch (list of dict): [{'texts': [list of sentences],
-                                'embeds': [list of sentence embeddings],
-                                'labels': [list of sentence labels]}
+        batch (list of dict): [{'texts': [list of sentences text 1],
+                                'embeds': [list of sentence embeddings text 1],
+                                'labels': [list of sentence labels text 1]},
+                                ...,
+                                {'texts': [list of sentences text n],
+                                'embeds': [list of sentence embeddings text n],
+                                'labels': [list of sentence labels text n]}]
     Return:
         batch (dict): {'embeds': torch.Tensor([tokenized sentences])
                        'labels': torch.Tensor([sentence labels]),
